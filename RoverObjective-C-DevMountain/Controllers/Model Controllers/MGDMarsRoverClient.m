@@ -26,6 +26,15 @@
 // URL for rover photo manifest organized by sol:
 //
 // https://api.nasa.gov/mars-photos/api/v1/manifests/Curiosity/?&api_key=DEMO_KEY
+//
+//
+// NASA API KEY info:
+//
+// https://api.nasa.gov/planetary/apod?api_key=QlklXCD3vdy9QJg3SPd5CnnzdmfT5D2988STfwf5
+// For additional support, please contact us. When contacting us, please tell us what API you're accessing and provide the following account details so we can quickly find you:
+//
+// Account Email: mggdavis@gmail.com
+// Account ID: 1414fc71-8bd2-451b-bb6e-835e9f5ed3ac
 
 
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
@@ -51,6 +60,8 @@
     
     
 }
+
++()
 
 @end
 
