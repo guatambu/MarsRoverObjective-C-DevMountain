@@ -13,9 +13,9 @@
 		FA3D934620E86FC30018C966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3D934420E86FC30018C966 /* LaunchScreen.storyboard */; };
 		FA3D934920E86FC30018C966 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D934820E86FC30018C966 /* main.m */; };
 		FA3D935320E86FC30018C966 /* RoverObjective_C_DevMountainTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D935220E86FC30018C966 /* RoverObjective_C_DevMountainTests.m */; };
-		FA3D936520E870840018C966 /* Rover.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936420E870840018C966 /* Rover.m */; };
-		FA3D936820E8709E0018C966 /* RoverPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936720E8709E0018C966 /* RoverPhoto.m */; };
-		FA3D936B20E870B00018C966 /* MartianSol.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936A20E870B00018C966 /* MartianSol.m */; };
+		FA3D936520E870840018C966 /* MGDRover.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936420E870840018C966 /* MGDRover.m */; };
+		FA3D936820E8709E0018C966 /* MGDRoverPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936720E8709E0018C966 /* MGDRoverPhoto.m */; };
+		FA3D936B20E870B00018C966 /* MGDMartianSol.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936A20E870B00018C966 /* MGDMartianSol.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +40,12 @@
 		FA3D934E20E86FC30018C966 /* RoverObjective-C-DevMountainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RoverObjective-C-DevMountainTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3D935220E86FC30018C966 /* RoverObjective_C_DevMountainTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoverObjective_C_DevMountainTests.m; sourceTree = "<group>"; };
 		FA3D935420E86FC30018C966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA3D936320E870840018C966 /* Rover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rover.h; sourceTree = "<group>"; };
-		FA3D936420E870840018C966 /* Rover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Rover.m; sourceTree = "<group>"; };
-		FA3D936620E8709E0018C966 /* RoverPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoverPhoto.h; sourceTree = "<group>"; };
-		FA3D936720E8709E0018C966 /* RoverPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoverPhoto.m; sourceTree = "<group>"; };
-		FA3D936920E870B00018C966 /* MartianSol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MartianSol.h; sourceTree = "<group>"; };
-		FA3D936A20E870B00018C966 /* MartianSol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MartianSol.m; sourceTree = "<group>"; };
+		FA3D936320E870840018C966 /* MGDRover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDRover.h; sourceTree = "<group>"; };
+		FA3D936420E870840018C966 /* MGDRover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDRover.m; sourceTree = "<group>"; };
+		FA3D936620E8709E0018C966 /* MGDRoverPhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDRoverPhoto.h; sourceTree = "<group>"; };
+		FA3D936720E8709E0018C966 /* MGDRoverPhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDRoverPhoto.m; sourceTree = "<group>"; };
+		FA3D936920E870B00018C966 /* MGDMartianSol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDMartianSol.h; sourceTree = "<group>"; };
+		FA3D936A20E870B00018C966 /* MGDMartianSol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDMartianSol.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,12 +128,12 @@
 		FA3D935F20E86FF40018C966 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FA3D936320E870840018C966 /* Rover.h */,
-				FA3D936420E870840018C966 /* Rover.m */,
-				FA3D936620E8709E0018C966 /* RoverPhoto.h */,
-				FA3D936720E8709E0018C966 /* RoverPhoto.m */,
-				FA3D936920E870B00018C966 /* MartianSol.h */,
-				FA3D936A20E870B00018C966 /* MartianSol.m */,
+				FA3D936320E870840018C966 /* MGDRover.h */,
+				FA3D936420E870840018C966 /* MGDRover.m */,
+				FA3D936620E8709E0018C966 /* MGDRoverPhoto.h */,
+				FA3D936720E8709E0018C966 /* MGDRoverPhoto.m */,
+				FA3D936920E870B00018C966 /* MGDMartianSol.h */,
+				FA3D936A20E870B00018C966 /* MGDMartianSol.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -263,11 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3D936520E870840018C966 /* Rover.m in Sources */,
+				FA3D936520E870840018C966 /* MGDRover.m in Sources */,
 				FA3D934920E86FC30018C966 /* main.m in Sources */,
-				FA3D936B20E870B00018C966 /* MartianSol.m in Sources */,
+				FA3D936B20E870B00018C966 /* MGDMartianSol.m in Sources */,
 				FA3D933B20E86FC30018C966 /* AppDelegate.m in Sources */,
-				FA3D936820E8709E0018C966 /* RoverPhoto.m in Sources */,
+				FA3D936820E8709E0018C966 /* MGDRoverPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
