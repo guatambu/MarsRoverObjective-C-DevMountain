@@ -11,6 +11,13 @@
 #import "MGDRover.h"
 #import "MGDRoverPhoto.h"
 
+static NSString *baseURLAsString = @"https://api.nasa.gov/mars-photos/api/v1/";
+static NSString *apiQueryKey = @"api_key";
+static NSString *apiQueryValue = @"QlklXCD3vdy9QJg3SPd5CnnzdmfT5D2988STfwf5";
+static NSString *martianSolQueryKey = @"sol";
+static NSString *roversPath = @"rovers";
+static NSString *manifestsPath = @"manifests";
+
 @implementation MGDMarsRoverClient
 
 // examples of the kinds of URLs neede for the appropriate rover photos calls
@@ -37,6 +44,47 @@
 // Account ID: 1414fc71-8bd2-451b-bb6e-835e9f5ed3ac
 
 
+
++(NSURL *)urlForInfoForRover:(NSString *)roverName
+{
+    NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
+    
+    baseURL = [NSURL fileURLWithPath:manifestsPath];
+    baseURL = [NSURL fileURLWithPath:roverName];
+    
+    NSURLComponents *roverManifestURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
+    
+    NSURLQueryItem *apiQuery = [NSURLQueryItem queryItemWithName:apiQueryKey value:apiQueryValue];
+    
+    roverManifestURLComponents.queryItems = [NSArray arrayWithObject:apiQuery];
+    
+    NSURL *manifestRoverSearchURL = roverManifestURLComponents.URL;
+    
+    return manifestRoverSearchURL;
+    
+}
+
++(NSURL *)urlForPhotosFromRover:(NSString *)roverName martianSolQueryvalue:(NSNumber *)martianSolQueryValue
+{
+    NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
+    
+    baseURL = [NSURL fileURLWithPath:roversPath];
+    baseURL = [NSURL fileURLWithPath:roverName];
+    
+    NSURLComponents *roverSolURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
+    
+    NSURLQueryItem *solQuery = [NSURLQueryItem queryItemWithName:martianSolQueryKey  value:martianSolQueryValue];
+    
+    NSURLQueryItem *apiQuery = [NSURLQueryItem queryItemWithName:apiQueryKey value:apiQueryValue];
+    
+    roverSolURLComponents.queryItems = [NSArray arrayWithObjects:solQuery, apiQuery, nil];
+    
+    NSURL *roverSolSearchURL = roverSolURLComponents.URL;
+    
+    return roverSolSearchURL;
+}
+
+
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
 {
     
@@ -61,7 +109,8 @@
     
 }
 
-+()
+
+
 
 @end
 
