@@ -64,7 +64,7 @@ static NSString *manifestsPath = @"manifests";
     
 }
 
-+(NSURL *)urlForPhotosFromRover:(NSString *)roverName martianSolQueryvalue:(NSNumber *)martianSolQueryValue
+-(NSURL *)urlForPhotosFromRover:(NSString *)roverName martianSolQueryValue:(NSNumber *)martianSolQueryValue
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
     
@@ -73,7 +73,9 @@ static NSString *manifestsPath = @"manifests";
     
     NSURLComponents *roverSolURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
     
-    NSURLQueryItem *solQuery = [NSURLQueryItem queryItemWithName:martianSolQueryKey  value:martianSolQueryValue];
+    NSString *martianSolQueryValueAsString = [martianSolQueryValue stringValue];
+    
+    NSURLQueryItem *solQuery = [NSURLQueryItem queryItemWithName:martianSolQueryKey  value:martianSolQueryValueAsString];
     
     NSURLQueryItem *apiQuery = [NSURLQueryItem queryItemWithName:apiQueryKey value:apiQueryValue];
     
@@ -87,13 +89,36 @@ static NSString *manifestsPath = @"manifests";
 
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
 {
-    
-    
+//    [NSURLSession sharedSession]dataTaskWithURL:<#(nonnull NSURL *)#> completionHandler:<#^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)completionHandler#>
+//
 }
 
 - (void)fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void (^)(MGDRover *, NSError *))completion
 {
     
+    NSURL *roverManifestSearchURL = [MGDMarsRoverClient urlForInfoForRover:roverNamed];
+    
+    [[NSURLSession sharedSession]dataTaskWithURL:roverManifestSearchURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"there was an error > MGDMarsRoverClient line 104: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        if (!data) {
+            NSLog(@"there was no data > MGDMarsRoverClient line 110: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        
+        MGDRover *newRover = [[MGDRover alloc]initWithDictionary:jsonDictionary];
+        
+        completion(newRover, nil);
+        
+    }].resume;
     
 }
 

@@ -17,6 +17,7 @@
 		FA3D936820E8709E0018C966 /* MGDRoverPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936720E8709E0018C966 /* MGDRoverPhoto.m */; };
 		FA3D936B20E870B00018C966 /* MGDMartianSol.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3D936A20E870B00018C966 /* MGDMartianSol.m */; };
 		FA9FEAED20EBF00200A760E9 /* MGDMarsRoverClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEAEC20EBF00200A760E9 /* MGDMarsRoverClient.m */; };
+		FA9FEAF020EC31A700A760E9 /* MGDRoverTestingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEAEF20EC31A700A760E9 /* MGDRoverTestingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		FA3D936A20E870B00018C966 /* MGDMartianSol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDMartianSol.m; sourceTree = "<group>"; };
 		FA9FEAEB20EBF00200A760E9 /* MGDMarsRoverClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDMarsRoverClient.h; sourceTree = "<group>"; };
 		FA9FEAEC20EBF00200A760E9 /* MGDMarsRoverClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDMarsRoverClient.m; sourceTree = "<group>"; };
+		FA9FEAEE20EC31A700A760E9 /* MGDRoverTestingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDRoverTestingViewController.h; sourceTree = "<group>"; };
+		FA9FEAEF20EC31A700A760E9 /* MGDRoverTestingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDRoverTestingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,8 @@
 		FA3D936220E870140018C966 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9FEAEE20EC31A700A760E9 /* MGDRoverTestingViewController.h */,
+				FA9FEAEF20EC31A700A760E9 /* MGDRoverTestingViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				FA3D936B20E870B00018C966 /* MGDMartianSol.m in Sources */,
 				FA9FEAED20EBF00200A760E9 /* MGDMarsRoverClient.m in Sources */,
 				FA3D933B20E86FC30018C966 /* AppDelegate.m in Sources */,
+				FA9FEAF020EC31A700A760E9 /* MGDRoverTestingViewController.m in Sources */,
 				FA3D936820E8709E0018C966 /* MGDRoverPhoto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
