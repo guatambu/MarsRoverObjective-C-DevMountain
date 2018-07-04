@@ -17,6 +17,7 @@ static NSString *apiQueryValue = @"QlklXCD3vdy9QJg3SPd5CnnzdmfT5D2988STfwf5";
 static NSString *martianSolQueryKey = @"sol";
 static NSString *roversPath = @"rovers";
 static NSString *manifestsPath = @"manifests";
+static NSString *photosPath = @"photos";
 
 @implementation MGDMarsRoverClient
 
@@ -34,6 +35,9 @@ static NSString *manifestsPath = @"manifests";
 //
 // https://api.nasa.gov/mars-photos/api/v1/manifests/Curiosity/?&api_key=DEMO_KEY
 //
+// URL to fetch an array of all available rovers
+//
+// https://api.nasa.gov/mars-photos/api/v1/rovers?&api_key=QlklXCD3vdy9QJg3SPd5CnnzdmfT5D2988STfwf5
 //
 // NASA API KEY info:
 //
@@ -42,7 +46,6 @@ static NSString *manifestsPath = @"manifests";
 //
 // Account Email: mggdavis@gmail.com
 // Account ID: 1414fc71-8bd2-451b-bb6e-835e9f5ed3ac
-
 
 
 +(NSURL *)urlForInfoForRover:(NSString *)roverName
@@ -64,12 +67,13 @@ static NSString *manifestsPath = @"manifests";
     
 }
 
--(NSURL *)urlForPhotosFromRover:(NSString *)roverName martianSolQueryValue:(NSNumber *)martianSolQueryValue
++(NSURL *)urlForPhotosFromRover:(NSString *)roverName martianSolQueryValue:(NSNumber *)martianSolQueryValue
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
     
     baseURL = [NSURL fileURLWithPath:roversPath];
     baseURL = [NSURL fileURLWithPath:roverName];
+    baseURL = [NSURL fileURLWithPath:photosPath];
     
     NSURLComponents *roverSolURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
     
@@ -86,11 +90,41 @@ static NSString *manifestsPath = @"manifests";
     return roverSolSearchURL;
 }
 
-
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
 {
-//    [NSURLSession sharedSession]dataTaskWithURL:<#(nonnull NSURL *)#> completionHandler:<#^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)completionHandler#>
-//
+    NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
+    
+    baseURL = [NSURL fileURLWithPath:roversPath];
+    
+    NSURLComponents *roversFetchURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
+    
+    NSURLQueryItem *apiQuery = [NSURLQueryItem queryItemWithName:apiQueryKey value:apiQueryValue];
+    
+    roversFetchURLComponents.queryItems = [NSArray arrayWithObject:apiQuery];
+    
+    NSURL *roversFetchURL = roversFetchURLComponents.URL;
+    
+    [[NSURLSession sharedSession]dataTaskWithURL:roversFetchURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"there was an error > RoverClient line 111: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        if (!data) {
+            NSLog(@"there was an error > RoverClient line 117: %@", error.localizedDescription);
+            completion(nil, error);
+        }
+        
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        
+        NSArray *rovers = jsonDictionary[roversPath];
+        
+        completion(rovers, nil);
+        
+    }].resume;
+
 }
 
 - (void)fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void (^)(MGDRover *, NSError *))completion
