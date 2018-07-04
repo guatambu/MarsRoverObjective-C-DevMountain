@@ -47,6 +47,7 @@ static NSString *photosPath = @"photos";
 // Account Email: mggdavis@gmail.com
 // Account ID: 1414fc71-8bd2-451b-bb6e-835e9f5ed3ac
 
+#pragma method to generate NSURL for list of photos organized by individual Mars Rover manifest
 
 +(NSURL *)urlForInfoForRover:(NSString *)roverName
 {
@@ -66,6 +67,9 @@ static NSString *photosPath = @"photos";
     return manifestRoverSearchURL;
     
 }
+
+
+#pragma method to generate NSURL for actual photos based on individual Mars Rover name and Martian Sol date
 
 +(NSURL *)urlForPhotosFromRover:(NSString *)roverName martianSolQueryValue:(NSNumber *)martianSolQueryValue
 {
@@ -90,6 +94,9 @@ static NSString *photosPath = @"photos";
     return roverSolSearchURL;
 }
 
+
+#pragma GET method to retrieve an array of all available Mars Rovers
+
 - (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
@@ -113,7 +120,7 @@ static NSString *photosPath = @"photos";
         }
         
         if (!data) {
-            NSLog(@"there was an error > RoverClient line 117: %@", error.localizedDescription);
+            NSLog(@"there was  no data > RoverClient line 117: %@", error.localizedDescription);
             completion(nil, error);
         }
         
@@ -126,6 +133,9 @@ static NSString *photosPath = @"photos";
     }].resume;
 
 }
+
+
+#pragma GET method to retrieve mission manifests for individual rover by name of Mars Rover
 
 - (void)fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void (^)(MGDRover *, NSError *))completion
 {
@@ -156,15 +166,63 @@ static NSString *photosPath = @"photos";
     
 }
 
+
+#pragma GET method to retrieve NSArray of photot objects which contain relevant image URLs by Mars Rover name and MArtian Sol date
+
 - (void)fetchPhotosFromRover:(MGDRover *)rover martianSol:(NSNumber *)martianSol completion:(void (^)(NSArray<UIImage *> *, NSError *))completion
 {
+    NSURL *fetchURLForPhotosFromIndividualRover = [MGDMarsRoverClient urlForPhotosFromRover:rover martianSolQueryValue:martianSol];
     
+    [[NSURLSession sharedSession]dataTaskWithURL:fetchURLForPhotosFromIndividualRover completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"there was an error > MGDMarsRoverClient line 179: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        if (!data) {
+            NSLog(@"there was no data > MGDMarsRoverClient line 185: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+        
+        NSArray *photos = jsonDictionary[photosPath];
+        
+        completion(photos, nil);
+        
+    }].resume;
     
 }
 
+
+#pragma GT method to retrieve NSData for photos
+
 - (void)fetchImageDataForPhoto:(MGDRoverPhoto *)photo completion:(void (^)(NSData *, NSError *))completion
 {
+    NSURL *imageURL = [NSURL URLWithString:photo.imageURL];
     
+    [[NSURLSession sharedSession]dataTaskWithURL:imageURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (error) {
+            NSLog(@"there was an error > RoverClient line 210: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        if (!data) {
+            NSLog(@"there was no data > RoverClient line 216: %@", error.localizedDescription);
+            completion(nil, error);
+            return;
+        }
+        
+        NSData *imageData = [NSData dataWithData:data];
+        
+        completion(imageData, nil);
+        
+    }].resume;
     
 }
 
