@@ -14,13 +14,13 @@
 
 #pragma GET networking methods
 
-- (void) fetchAllMarsRoversWithCompletion:(void(^)(NSArray<NSString *> *roverNames, NSError *error))completion;
++ (void) fetchAllMarsRoversWithCompletion:(void(^)(NSArray<NSString *> *roverNames, NSError *error))completion;
 
-- (void) fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void(^)(MGDRover *rover, NSError *error))completion;
++ (void) fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void(^)(MGDRover *rover, NSError *error))completion;
 
-- (void) fetchPhotosFromRover:(MGDRover *)rover martianSol:(NSNumber *)martianSol completion:(void(^)(NSArray<UIImage *> *roverPhotos, NSError *error))completion;
++ (void) fetchPhotosFromRover:(MGDRover *)rover martianSol:(NSNumber *)martianSol completion:(void(^)(NSArray<UIImage *> *roverPhotos, NSError *error))completion;
 
-- (void) fetchImageDataForPhoto:(MGDRoverPhoto *)photo completion:(void(^)(NSData *data, NSError *error))completion;
++ (void) fetchImageDataForPhoto:(MGDRoverPhoto *)photo completion:(void(^)(NSData *data, NSError *error))completion;
 
 @end
 

@@ -11,13 +11,13 @@
 #import "MGDRover.h"
 #import "MGDRoverPhoto.h"
 
-static NSString *baseURLAsString = @"https://api.nasa.gov/mars-photos/api/v1/";
+static NSString *baseURLAsString = @"https://api.nasa.gov/";
 static NSString *apiQueryKey = @"api_key";
 static NSString *apiQueryValue = @"QlklXCD3vdy9QJg3SPd5CnnzdmfT5D2988STfwf5";
 static NSString *martianSolQueryKey = @"sol";
-static NSString *roversPath = @"rovers";
-static NSString *manifestsPath = @"manifests";
-static NSString *photosPath = @"photos";
+static NSString *roversPath = @"/mars-photos/api/v1/rovers";
+static NSString *manifestsPath = @"/mars-photos/api/v1/manifests";
+static NSString *photosPath = @"/photos";
 
 @implementation MGDMarsRoverClient
 
@@ -53,10 +53,9 @@ static NSString *photosPath = @"photos";
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
     
-    baseURL = [NSURL fileURLWithPath:manifestsPath];
-    baseURL = [NSURL fileURLWithPath:roverName];
-    
     NSURLComponents *roverManifestURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
+    
+    roverManifestURLComponents.path = [NSString stringWithFormat: @"%@/%@", manifestsPath, roverName];
     
     NSURLQueryItem *apiQuery = [NSURLQueryItem queryItemWithName:apiQueryKey value:apiQueryValue];
     
@@ -75,11 +74,9 @@ static NSString *photosPath = @"photos";
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
     
-    baseURL = [NSURL fileURLWithPath:roversPath];
-    baseURL = [NSURL fileURLWithPath:roverName];
-    baseURL = [NSURL fileURLWithPath:photosPath];
-    
     NSURLComponents *roverSolURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
+    
+    roverSolURLComponents.path = [NSString stringWithFormat:@"%@/%@%@", roversPath, roverName, photosPath];
     
     NSString *martianSolQueryValueAsString = [martianSolQueryValue stringValue];
     
@@ -97,13 +94,13 @@ static NSString *photosPath = @"photos";
 
 #pragma GET method to retrieve an array of all available Mars Rovers
 
-- (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
++ (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
     
-    baseURL = [NSURL fileURLWithPath:roversPath];
-    
     NSURLComponents *roversFetchURLComponents = [NSURLComponents componentsWithURL:baseURL resolvingAgainstBaseURL:true];
+    
+    roversFetchURLComponents.path = roversPath;
     
     NSURLQueryItem *apiQuery = [NSURLQueryItem queryItemWithName:apiQueryKey value:apiQueryValue];
     
@@ -126,7 +123,7 @@ static NSString *photosPath = @"photos";
         
         NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
         
-        NSArray *rovers = jsonDictionary[roversPath];
+        NSArray *rovers = jsonDictionary[@"rovers"];
         
         completion(rovers, nil);
         
@@ -137,7 +134,7 @@ static NSString *photosPath = @"photos";
 
 #pragma GET method to retrieve mission manifests for individual rover by name of Mars Rover
 
-- (void)fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void (^)(MGDRover *, NSError *))completion
++ (void)fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void (^)(MGDRover *, NSError *))completion
 {
     
     NSURL *roverManifestSearchURL = [MGDMarsRoverClient urlForInfoForRover:roverNamed];
@@ -169,7 +166,7 @@ static NSString *photosPath = @"photos";
 
 #pragma GET method to retrieve NSArray of photot objects which contain relevant image URLs by Mars Rover name and MArtian Sol date
 
-- (void)fetchPhotosFromRover:(MGDRover *)rover martianSol:(NSNumber *)martianSol completion:(void (^)(NSArray<UIImage *> *, NSError *))completion
++ (void)fetchPhotosFromRover:(MGDRover *)rover martianSol:(NSNumber *)martianSol completion:(void (^)(NSArray<UIImage *> *, NSError *))completion
 {
     NSURL *fetchURLForPhotosFromIndividualRover = [MGDMarsRoverClient urlForPhotosFromRover:rover martianSolQueryValue:martianSol];
     
@@ -189,7 +186,7 @@ static NSString *photosPath = @"photos";
         
         NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
         
-        NSArray *photos = jsonDictionary[photosPath];
+        NSArray *photos = jsonDictionary[@"photos"];
         
         completion(photos, nil);
         
@@ -200,7 +197,7 @@ static NSString *photosPath = @"photos";
 
 #pragma GT method to retrieve NSData for photos
 
-- (void)fetchImageDataForPhoto:(MGDRoverPhoto *)photo completion:(void (^)(NSData *, NSError *))completion
++ (void)fetchImageDataForPhoto:(MGDRoverPhoto *)photo completion:(void (^)(NSData *, NSError *))completion
 {
     NSURL *imageURL = [NSURL URLWithString:photo.imageURL];
     

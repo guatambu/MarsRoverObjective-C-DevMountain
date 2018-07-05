@@ -6,9 +6,12 @@
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 
-#import "MGDRoversTableViewController.h"
 #import "MGDRover.h"
 #import "MGDMarsRoverClient.h"
+#import "MGDRoverController.h"
+#import "MGDRoversTableViewController.h"
+
+
 
 @interface MGDRoversTableViewController ()
 
@@ -18,23 +21,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
+    [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray<NSString *> *roverNames, NSError *error) {
+        [MGDRoverController sharedInstance].rovers = [NSMutableArray arrayWithArray:roverNames];
+        for (MGDRover *rover in [MGDRoverController sharedInstance].rovers) {
+            NSLog(@"%@", rover);
+        }
+    }];
 }
-
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.rovers.count;
+    return [MGDRoverController sharedInstance].rovers.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"roverCell" forIndexPath:indexPath];
     
+    MGDRover *rover = [MGDRoverController sharedInstance].rovers[indexPath.row];
+    
     // Configure the cell...
+    
+    cell.textLabel.text = rover.roverName;
     
     return cell;
 }
