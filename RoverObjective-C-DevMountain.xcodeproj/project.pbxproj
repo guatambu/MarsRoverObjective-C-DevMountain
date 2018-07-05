@@ -22,6 +22,9 @@
 		FA9FEAF920EE9A0700A760E9 /* MGDPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEAF820EE9A0700A760E9 /* MGDPhotoCollectionViewCell.m */; };
 		FA9FEAFC20EE9A1E00A760E9 /* MGDPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEAFB20EE9A1E00A760E9 /* MGDPhotosCollectionViewController.m */; };
 		FA9FEB0020EE9D5600A760E9 /* MGDPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEAFF20EE9D5600A760E9 /* MGDPhotoDetailViewController.m */; };
+		FA9FEB0320EEA4FA00A760E9 /* MGDRoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEB0220EEA4FA00A760E9 /* MGDRoverController.m */; };
+		FA9FEB0620EEA50F00A760E9 /* MGDRoverPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEB0520EEA50F00A760E9 /* MGDRoverPhotoController.m */; };
+		FA9FEB0920EEA52A00A760E9 /* MGDMartianSolController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEB0820EEA52A00A760E9 /* MGDMartianSolController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,12 @@
 		FA9FEAFB20EE9A1E00A760E9 /* MGDPhotosCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDPhotosCollectionViewController.m; sourceTree = "<group>"; };
 		FA9FEAFE20EE9D5600A760E9 /* MGDPhotoDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDPhotoDetailViewController.h; sourceTree = "<group>"; };
 		FA9FEAFF20EE9D5600A760E9 /* MGDPhotoDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDPhotoDetailViewController.m; sourceTree = "<group>"; };
+		FA9FEB0120EEA4FA00A760E9 /* MGDRoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDRoverController.h; sourceTree = "<group>"; };
+		FA9FEB0220EEA4FA00A760E9 /* MGDRoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDRoverController.m; sourceTree = "<group>"; };
+		FA9FEB0420EEA50F00A760E9 /* MGDRoverPhotoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDRoverPhotoController.h; sourceTree = "<group>"; };
+		FA9FEB0520EEA50F00A760E9 /* MGDRoverPhotoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDRoverPhotoController.m; sourceTree = "<group>"; };
+		FA9FEB0720EEA52A00A760E9 /* MGDMartianSolController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDMartianSolController.h; sourceTree = "<group>"; };
+		FA9FEB0820EEA52A00A760E9 /* MGDMartianSolController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDMartianSolController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +180,12 @@
 		FA3D936120E870060018C966 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9FEB0120EEA4FA00A760E9 /* MGDRoverController.h */,
+				FA9FEB0220EEA4FA00A760E9 /* MGDRoverController.m */,
+				FA9FEB0420EEA50F00A760E9 /* MGDRoverPhotoController.h */,
+				FA9FEB0520EEA50F00A760E9 /* MGDRoverPhotoController.m */,
+				FA9FEB0720EEA52A00A760E9 /* MGDMartianSolController.h */,
+				FA9FEB0820EEA52A00A760E9 /* MGDMartianSolController.m */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -301,13 +316,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9FEB0920EEA52A00A760E9 /* MGDMartianSolController.m in Sources */,
 				FA9FEAFC20EE9A1E00A760E9 /* MGDPhotosCollectionViewController.m in Sources */,
+				FA9FEB0320EEA4FA00A760E9 /* MGDRoverController.m in Sources */,
 				FA9FEB0020EE9D5600A760E9 /* MGDPhotoDetailViewController.m in Sources */,
 				FA3D936520E870840018C966 /* MGDRover.m in Sources */,
 				FA9FEAF920EE9A0700A760E9 /* MGDPhotoCollectionViewCell.m in Sources */,
 				FA3D934920E86FC30018C966 /* main.m in Sources */,
 				FA3D936B20E870B00018C966 /* MGDMartianSol.m in Sources */,
 				FA9FEAF320EE99BE00A760E9 /* MGDRoversTableViewController.m in Sources */,
+				FA9FEB0620EEA50F00A760E9 /* MGDRoverPhotoController.m in Sources */,
 				FA9FEAF620EE99DC00A760E9 /* MGDSolsTableViewController.m in Sources */,
 				FA9FEAED20EBF00200A760E9 /* MGDMarsRoverClient.m in Sources */,
 				FA3D933B20E86FC30018C966 /* AppDelegate.m in Sources */,
