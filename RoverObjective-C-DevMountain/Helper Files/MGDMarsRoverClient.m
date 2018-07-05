@@ -2,7 +2,7 @@
 //  MGDMarsRoverClient.m
 //  RoverObjective-C-DevMountain
 //
-//  Created by Kelly Johnson on 7/3/18.
+//  Created by Michael Guatambu Davis on 7/3/18.
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 

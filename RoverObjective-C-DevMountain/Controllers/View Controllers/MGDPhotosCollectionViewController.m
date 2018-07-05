@@ -1,18 +1,18 @@
 //
-//  PhotosCollectionViewController.m
+//  MGDPhotosCollectionViewController.m
 //  RoverObjective-C-DevMountain
 //
-//  Created by Kelly Johnson on 7/5/18.
+//  Created by Michael Guatambu Davis on 7/5/18.
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 
-#import "PhotosCollectionViewController.h"
+#import "MGDPhotosCollectionViewController.h"
 
-@interface PhotosCollectionViewController ()
+@interface MGDPhotosCollectionViewController ()
 
 @end
 
-@implementation PhotosCollectionViewController
+@implementation MGDPhotosCollectionViewController
 
 static NSString * const reuseIdentifier = @"Cell";
 

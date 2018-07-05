@@ -1,18 +1,18 @@
 //
-//  SolsTableViewController.m
+//  MGDSolsTableViewController.m
 //  RoverObjective-C-DevMountain
 //
-//  Created by Kelly Johnson on 7/5/18.
+//  Created by Michael Guatambu Davis on 7/5/18.
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 
-#import "SolsTableViewController.h"
+#import "MGDSolsTableViewController.h"
 
-@interface SolsTableViewController ()
+@interface MGDSolsTableViewController ()
 
 @end
 
-@implementation SolsTableViewController
+@implementation MGDSolsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

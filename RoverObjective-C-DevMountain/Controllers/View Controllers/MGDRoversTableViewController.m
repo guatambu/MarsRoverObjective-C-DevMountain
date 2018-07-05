@@ -1,18 +1,18 @@
 //
-//  RoversTableViewController.m
+//  MGDRoversTableViewController.m
 //  RoverObjective-C-DevMountain
 //
-//  Created by Kelly Johnson on 7/5/18.
+//  Created by Michael Guatambu Davis on 7/5/18.
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 
-#import "RoversTableViewController.h"
+#import "MGDRoversTableViewController.h"
 
-@interface RoversTableViewController ()
+@interface MGDRoversTableViewController ()
 
 @end
 
-@implementation RoversTableViewController
+@implementation MGDRoversTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
