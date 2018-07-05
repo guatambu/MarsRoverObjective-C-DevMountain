@@ -10,4 +10,12 @@
 
 @interface MGDMartianSolController : NSObject
 
+#pragma properties
+
+@property (nonatomic, readwrite)NSMutableArray *sols;
+
+#pragma sharedInstance
+
++(instancetype)sharedInstance;
+
 @end

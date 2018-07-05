@@ -10,4 +10,14 @@
 
 @implementation MGDMartianSolController
 
++(instancetype)sharedInstance
+{
+    static MGDMartianSolController *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [MGDMartianSolController new];
+    });
+    return sharedInstance;
+}
+
 @end

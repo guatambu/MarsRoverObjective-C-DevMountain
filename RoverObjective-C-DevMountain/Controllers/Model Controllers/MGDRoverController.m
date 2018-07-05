@@ -10,4 +10,17 @@
 
 @implementation MGDRoverController
 
+#pragma sharedInstance
+
++(instancetype)sharedInstance
+{
+    static MGDRoverController *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [MGDRoverController new];
+    });
+    return sharedInstance;
+    
+}
+
 @end

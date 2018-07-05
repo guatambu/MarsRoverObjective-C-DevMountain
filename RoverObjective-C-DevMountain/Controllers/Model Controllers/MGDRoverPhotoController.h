@@ -10,4 +10,12 @@
 
 @interface MGDRoverPhotoController : NSObject
 
+#pragma properties
+
+@property (nonatomic, readwrite)NSMutableArray *photos;
+
+#pragma sharedInstance
+
++(instancetype)sharedInstance;
+
 @end

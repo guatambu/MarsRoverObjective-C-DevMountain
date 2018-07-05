@@ -10,4 +10,12 @@
 
 @interface MGDRoverController : NSObject
 
+#pragma properties
+
+@property (nonatomic, readwrite)NSMutableArray *rovers;
+
+#pragma sharedInstance
+
++(instancetype)sharedInstance;
+
 @end

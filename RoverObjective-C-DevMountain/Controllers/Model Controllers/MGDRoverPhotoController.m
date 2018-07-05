@@ -10,4 +10,14 @@
 
 @implementation MGDRoverPhotoController
 
++(instancetype)sharedInstance
+{
+    static MGDRoverPhotoController *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [MGDRoverPhotoController new];
+    });
+    return sharedInstance;
+}
+
 @end
