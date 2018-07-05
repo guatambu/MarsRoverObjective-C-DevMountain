@@ -94,7 +94,7 @@ static NSString *photosPath = @"/photos";
 
 #pragma GET method to retrieve an array of all available Mars Rovers
 
-+ (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<NSString *> *, NSError *))completion
++ (void)fetchAllMarsRoversWithCompletion:(void (^)(NSArray<MGDRover *> *, NSError *))completion
 {
     NSURL *baseURL = [NSURL URLWithString:baseURLAsString];
     
@@ -123,7 +123,14 @@ static NSString *photosPath = @"/photos";
         
         NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
         
-        NSArray *rovers = jsonDictionary[@"rovers"];
+        NSArray *roverDictionaries = jsonDictionary[@"rovers"];
+        
+        NSMutableArray *rovers = [NSMutableArray array];
+        
+        for (NSDictionary *roverDictionary in roverDictionaries) {
+            MGDRover *newRover = [[MGDRover alloc] initWithDictionary:roverDictionary];
+            [rovers addObject:newRover];
+        }
         
         completion(rovers, nil);
         

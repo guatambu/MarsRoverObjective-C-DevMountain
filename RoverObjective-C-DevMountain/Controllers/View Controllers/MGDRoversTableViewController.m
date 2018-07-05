@@ -22,11 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray<NSString *> *roverNames, NSError *error) {
-        [MGDRoverController sharedInstance].rovers = [NSMutableArray arrayWithArray:roverNames];
-        for (MGDRover *rover in [MGDRoverController sharedInstance].rovers) {
-            NSLog(@"%@", rover);
+    [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray<MGDRover *> *rovers, NSError *error) {
+        self.rovers = [NSMutableArray arrayWithArray:rovers];
+        for (MGDRover *rover in self.rovers) {
+            NSLog(@"%@", rover.roverName);
         }
+        [self.tableView.reloadData];
     }];
 }
 
@@ -34,14 +35,14 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [MGDRoverController sharedInstance].rovers.count;
+    return self.rovers.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"roverCell" forIndexPath:indexPath];
     
-    MGDRover *rover = [MGDRoverController sharedInstance].rovers[indexPath.row];
+    MGDRover *rover = self.rovers[indexPath.row];
     
     // Configure the cell...
     

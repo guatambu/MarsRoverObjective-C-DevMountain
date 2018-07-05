@@ -52,7 +52,7 @@
 
 + (NSString *)roverNameKey
 {
-    return @"rover";
+    return @"name";
 }
 
 + (NSString *)launchDateKey

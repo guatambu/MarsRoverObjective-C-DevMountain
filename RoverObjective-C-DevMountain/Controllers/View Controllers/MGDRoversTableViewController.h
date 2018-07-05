@@ -10,5 +10,8 @@
 
 @interface MGDRoversTableViewController : UITableViewController
 
+#pragma properties
+
+@property (nonatomic, readwrite)NSMutableArray *rovers;
 
 @end
