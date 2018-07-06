@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  RoverObjective-C-DevMountain
 //
-//  Created by Kelly Johnson on 6/30/18.
+//  Created by Michael Guatambu Davis on 6/30/18.
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 

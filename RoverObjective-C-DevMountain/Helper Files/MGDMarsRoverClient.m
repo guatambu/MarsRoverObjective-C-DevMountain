@@ -162,9 +162,9 @@ static NSString *photosPath = @"/photos";
         
         NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
         
-        MGDRover *newRover = [[MGDRover alloc]initWithDictionary:jsonDictionary];
+        MGDRover *newRoverManifest = [[MGDRover alloc]initWithDictionary:jsonDictionary];
         
-        completion(newRover, nil);
+        completion(newRoverManifest, nil);
         
     }].resume;
     

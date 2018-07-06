@@ -6,46 +6,75 @@
 //  Copyright © 2018 Leme Group. All rights reserved.
 //
 
+#import "MGDRoversTableViewController.h"
 #import "MGDRover.h"
 #import "MGDMarsRoverClient.h"
 #import "MGDRoverController.h"
-#import "MGDRoversTableViewController.h"
-
 
 
 @interface MGDRoversTableViewController ()
+
+@property (nonatomic, readwrite)NSMutableArray *localRovers;
 
 @end
 
 @implementation MGDRoversTableViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray<MGDRover *> *rovers, NSError *error) {
-        self.rovers = [NSMutableArray arrayWithArray:rovers];
-        for (MGDRover *rover in self.rovers) {
-            NSLog(@"%@", rover.roverName);
-        }
-        [self.tableView.reloadData];
-    }];
+    NSMutableArray *hangar = [NSMutableArray array];
+    
+    dispatch_group_t roverGroup = dispatch_group_create();
+
+    dispatch_group_enter(roverGroup);
+    
+        [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray<MGDRover *> *rovers, NSError *error) {
+            
+            if (error) {
+                NSLog(@"there was an error > MGDRoversTableViewController line 34: %@ ", error.localizedDescription);
+            }
+            
+            dispatch_queue_t returnedRoversQueue = dispatch_queue_create("com.mgd.returnedRoversQueue", 0);
+            
+            for (MGDRover *rover in rovers) {
+                [MGDMarsRoverClient fetchMissionManifestForRoverNamed:rover.roverName completion:^(MGDRover *roverManifest, NSError *error) {
+                    
+                    if (error) {
+                        NSLog(@"there was an error > MGDRoversTableViewController line 45: %@ ", error.localizedDescription);
+                        
+                        dispatch_group_leave(roverGroup);
+                    }
+                    
+                    dispatch_async(returnedRoversQueue, ^{
+                        [hangar addObjectsFromArray:rovers];
+//                        dispatch_group_leave(roverGroup);
+                    });
+                }];
+            }
+            dispatch_group_leave(roverGroup);
+        }];
+    
+    dispatch_group_wait(roverGroup, DISPATCH_TIME_FOREVER);
+    
+    self.localRovers = hangar;
+    
 }
 
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.rovers.count;
+    return self.localRovers.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"roverCell" forIndexPath:indexPath];
     
-    MGDRover *rover = self.rovers[indexPath.row];
-    
-    // Configure the cell...
-    
+    MGDRover *rover = self.localRovers[indexPath.row];
+
     cell.textLabel.text = rover.roverName;
     
     return cell;
@@ -60,5 +89,36 @@
     // Pass the selected object to the new view controller.
 }
 
+- (void)setRovers:(NSArray *)rovers
+{
+    if (rovers != _localRovers) {
+        _localRovers = [rovers copy];
+        [self.tableView reloadData];
+    }
+}
+
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
