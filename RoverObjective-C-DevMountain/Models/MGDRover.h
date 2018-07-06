@@ -13,12 +13,13 @@
 #pragma properties
 
 @property (nonatomic, copy)NSString *roverName;
-@property (nonatomic, readonly)NSString *launchDate;
-@property (nonatomic, readonly)NSString *landingDate;
+@property (nonatomic, copy)NSString *launchDate;
+@property (nonatomic, copy)NSString *landingDate;
+@property (nonatomic, copy)NSString *status;
 @property (nonatomic, readonly)NSNumber *maxSol;
-@property (nonatomic, readonly)NSString *maxDateOnEarth;
+@property (nonatomic, copy)NSString *maxDateOnEarth;
 @property (nonatomic, readonly)NSNumber *numberOfPhotosTakenByRover;
-@property (nonatomic, copy)NSString *solDescriptions;
+@property (nonatomic, copy)NSArray *photosBySol;
 
 typedef NS_ENUM(NSInteger, roverActiveStatus) {
     ACTIVE = 0,
@@ -27,13 +28,14 @@ typedef NS_ENUM(NSInteger, roverActiveStatus) {
 
 #pragma initializer
 
-- (instancetype)initWithRoverName:(NSString *)roverName
-                      launchDate:(NSString *)launchDate
-                     landingDate:(NSString *)landingDate
-                          maxSol:(NSNumber *)maxSol
-                  maxDateOnEarth:(NSString *)maxDateOnEarth
-      numberOfPhotosTakenByRover:(NSNumber *)numberOfPhotosTakenByRover
-                 solDescriptions:(NSString *)solDescriptions;
+- (instancetype)initWithRoverName:(NSString *)name
+                       launchDate:(NSString *)launchDate
+                      landingDate:(NSString *)landingDate
+                           status:(NSString *)status
+                           maxSol:(NSNumber *)maxSol
+                   maxDateOnEarth:(NSString *)maxDateOnEarth
+       numberOfPhotosTakenByRover:(NSNumber *)numberOfPhotosTakenByRover
+                      photosBySol:(NSArray *)photosBySol;
 
 #pragma convenience initializer from Dictionary
 

@@ -14,7 +14,7 @@
 
 @interface MGDRoversTableViewController ()
 
-@property (nonatomic, readwrite)NSMutableArray *localRovers;
+@property (nonatomic, readwrite)NSArray *localRovers;
 
 @end
 
@@ -30,7 +30,7 @@
 
     dispatch_group_enter(roverGroup);
     
-        [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray<MGDRover *> *rovers, NSError *error) {
+        [MGDMarsRoverClient fetchAllMarsRoversWithCompletion:^(NSArray *roverStrings, NSError *error) {
             
             if (error) {
                 NSLog(@"there was an error > MGDRoversTableViewController line 34: %@ ", error.localizedDescription);
@@ -38,8 +38,8 @@
             
             dispatch_queue_t returnedRoversQueue = dispatch_queue_create("com.mgd.returnedRoversQueue", 0);
             
-            for (MGDRover *rover in rovers) {
-                [MGDMarsRoverClient fetchMissionManifestForRoverNamed:rover.roverName completion:^(MGDRover *roverManifest, NSError *error) {
+            for (MGDRover *roverString in roverStrings) {
+                [MGDMarsRoverClient fetchMissionManifestForRoverNamed:roverString completion:^(MGDRover *roverManifest, NSError *error) {
                     
                     if (error) {
                         NSLog(@"there was an error > MGDRoversTableViewController line 45: %@ ", error.localizedDescription);
@@ -48,8 +48,8 @@
                     }
                     
                     dispatch_async(returnedRoversQueue, ^{
-                        [hangar addObjectsFromArray:rovers];
-//                        dispatch_group_leave(roverGroup);
+                        [hangar addObject:roverManifest];
+                        //dispatch_group_leave(roverGroup);
                     });
                 }];
             }

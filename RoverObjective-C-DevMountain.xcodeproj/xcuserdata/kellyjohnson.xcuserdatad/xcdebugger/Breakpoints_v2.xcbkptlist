@@ -2,4 +2,117 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RoverObjective-C-DevMountain/Models/MGDRover.m"
+            timestampString = "552612042.9896899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-initWithDictionary:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RoverObjective-C-DevMountain/Controllers/View Controllers/MGDRoversTableViewController.m"
+            timestampString = "552612042.989791"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RoverObjective-C-DevMountain/Controllers/View Controllers/MGDRoversTableViewController.m"
+            timestampString = "552612042.990335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RoverObjective-C-DevMountain/Controllers/View Controllers/MGDRoversTableViewController.m"
+            timestampString = "552612088.302243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[MGDRoversTableViewController viewDidLoad]_block_invoke_3"
+                  moduleName = "RoverObjective-C-DevMountain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kellyjohnson/Dropbox/Guata_Dev/DevMountain%20iOS/RoverObjective-C-DevMountain/RoverObjective-C-DevMountain/Controllers/View%20Controllers/MGDRoversTableViewController.m"
+                  timestampString = "552612088.3109601"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "50">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "RoverObjective-C-DevMountain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kellyjohnson/Dropbox/Guata_Dev/DevMountain%20iOS/RoverObjective-C-DevMountain/RoverObjective-C-DevMountain/Controllers/View%20Controllers/MGDRoversTableViewController.m"
+                  timestampString = "552612088.314881"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "RoverObjective-C-DevMountain"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/kellyjohnson/Dropbox/Guata_Dev/DevMountain%20iOS/RoverObjective-C-DevMountain/RoverObjective-C-DevMountain/Controllers/View%20Controllers/MGDRoversTableViewController.m"
+                  timestampString = "552612088.318341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "59">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
