@@ -16,7 +16,7 @@
 
 + (void) fetchAllMarsRoversWithCompletion:(void(^)(NSArray<MGDRover *> *rovers, NSError *error))completion;
 
-+ (void) fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void(^)(MGDRover *roverManifest, NSError *error))completion;
++ (void) fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void(^)(MGDRover *roverObject, NSError *error))completion;
 
 + (void) fetchPhotosFromRover:(MGDRover *)rover martianSol:(NSNumber *)martianSol completion:(void(^)(NSArray<UIImage *> *roverPhotos, NSError *error))completion;
 

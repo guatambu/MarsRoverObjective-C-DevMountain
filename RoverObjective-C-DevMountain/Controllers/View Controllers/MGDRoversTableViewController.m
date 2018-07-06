@@ -14,7 +14,7 @@
 
 @interface MGDRoversTableViewController ()
 
-@property (nonatomic, readwrite)NSMutableArray *localRovers;
+@property (nonatomic, copy)NSArray *localRovers;
 
 @end
 
@@ -49,7 +49,7 @@
                     
                     dispatch_async(returnedRoversQueue, ^{
                         [hangar addObjectsFromArray:rovers];
-//                        dispatch_group_leave(roverGroup);
+                        dispatch_group_leave(roverGroup);
                     });
                 }];
             }
@@ -74,8 +74,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"roverCell" forIndexPath:indexPath];
     
     MGDRover *rover = self.localRovers[indexPath.row];
-
-    cell.textLabel.text = rover.roverName;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.textLabel.text = rover.roverName;
+        [self.tableView reloadData];
+    });
+    
     
     return cell;
 }
@@ -89,6 +93,8 @@
     // Pass the selected object to the new view controller.
 }
 
+#pragma setRovers
+
 - (void)setRovers:(NSArray *)rovers
 {
     if (rovers != _localRovers) {
@@ -97,28 +103,5 @@
     }
 }
 
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
