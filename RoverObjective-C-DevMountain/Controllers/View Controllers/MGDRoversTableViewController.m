@@ -50,6 +50,7 @@
                     dispatch_async(returnedRoversQueue, ^{
                         [hangar addObject:roverManifest];
                         //dispatch_group_leave(roverGroup);
+                        //yay we might have fixed it
                     });
                 }];
             }
