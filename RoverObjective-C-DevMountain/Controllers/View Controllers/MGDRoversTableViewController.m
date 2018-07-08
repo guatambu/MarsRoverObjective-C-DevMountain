@@ -52,14 +52,12 @@
                         //dispatch_group_leave(roverGroup);
                         //yay we might have fixed it
                     });
+                    self.localRovers = hangar;
                 }];
             }
             dispatch_group_leave(roverGroup);
         }];
-    
     dispatch_group_wait(roverGroup, DISPATCH_TIME_FOREVER);
-    
-    self.localRovers = hangar;
     
 }
 

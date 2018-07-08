@@ -25,6 +25,7 @@
 		FA9FEB0320EEA4FA00A760E9 /* MGDRoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEB0220EEA4FA00A760E9 /* MGDRoverController.m */; };
 		FA9FEB0620EEA50F00A760E9 /* MGDRoverPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEB0520EEA50F00A760E9 /* MGDRoverPhotoController.m */; };
 		FA9FEB0920EEA52A00A760E9 /* MGDMartianSolController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FEB0820EEA52A00A760E9 /* MGDMartianSolController.m */; };
+		FAD7694620F18E3D004DCDAD /* MGDPhotoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD7694520F18E3D004DCDAD /* MGDPhotoCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		FA9FEB0520EEA50F00A760E9 /* MGDRoverPhotoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDRoverPhotoController.m; sourceTree = "<group>"; };
 		FA9FEB0720EEA52A00A760E9 /* MGDMartianSolController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDMartianSolController.h; sourceTree = "<group>"; };
 		FA9FEB0820EEA52A00A760E9 /* MGDMartianSolController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDMartianSolController.m; sourceTree = "<group>"; };
+		FAD7694420F18E3D004DCDAD /* MGDPhotoCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGDPhotoCache.h; sourceTree = "<group>"; };
+		FAD7694520F18E3D004DCDAD /* MGDPhotoCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGDPhotoCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +213,8 @@
 			children = (
 				FA9FEAEB20EBF00200A760E9 /* MGDMarsRoverClient.h */,
 				FA9FEAEC20EBF00200A760E9 /* MGDMarsRoverClient.m */,
+				FAD7694420F18E3D004DCDAD /* MGDPhotoCache.h */,
+				FAD7694520F18E3D004DCDAD /* MGDPhotoCache.m */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				FA9FEB0920EEA52A00A760E9 /* MGDMartianSolController.m in Sources */,
 				FA9FEAFC20EE9A1E00A760E9 /* MGDPhotosCollectionViewController.m in Sources */,
 				FA9FEB0320EEA4FA00A760E9 /* MGDRoverController.m in Sources */,
+				FAD7694620F18E3D004DCDAD /* MGDPhotoCache.m in Sources */,
 				FA9FEB0020EE9D5600A760E9 /* MGDPhotoDetailViewController.m in Sources */,
 				FA3D936520E870840018C966 /* MGDRover.m in Sources */,
 				FA9FEAF920EE9A0700A760E9 /* MGDPhotoCollectionViewCell.m in Sources */,
