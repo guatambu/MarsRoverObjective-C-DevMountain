@@ -14,7 +14,7 @@
 
 #pragma GET networking methods
 
-+ (void) fetchAllMarsRoversWithCompletion:(void(^)(NSArray<MGDRover *> *rovers, NSError *error))completion;
++ (void) fetchAllMarsRoversWithCompletion:(void(^)(NSArray *roverStrings, NSError *error))completion;
 
 + (void) fetchMissionManifestForRoverNamed:(NSString *)roverNamed completion:(void(^)(MGDRover *roverObject, NSError *error))completion;
 

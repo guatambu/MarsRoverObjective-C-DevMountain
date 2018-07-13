@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MGDRover.h"
 
 @interface MGDMartianSolController : NSObject
 
 #pragma properties
 
 @property (nonatomic, readwrite)NSMutableArray *sols;
+@property (nonatomic, readwrite)MGDRover *roverObjectWithSols;
 
 #pragma sharedInstance
 
