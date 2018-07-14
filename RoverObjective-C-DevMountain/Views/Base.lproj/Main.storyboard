@@ -140,7 +140,7 @@
                                     <constraint firstItem="wdR-5k-HRm" firstAttribute="top" secondItem="97v-zw-b4C" secondAttribute="top" id="eRg-9g-otE"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="thumbImageView" destination="wdR-5k-HRm" id="6G9-nv-BYg"/>
+                                    <outlet property="thumbImageView" destination="wdR-5k-HRm" id="PKp-V3-dqS"/>
                                     <segue destination="0ZI-AM-Dwg" kind="show" identifier="toPhotoDetailShowSegue" id="8F6-3o-NWh"/>
                                 </connections>
                             </collectionViewCell>

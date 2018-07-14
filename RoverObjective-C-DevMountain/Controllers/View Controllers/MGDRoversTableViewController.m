@@ -14,11 +14,7 @@
 
 @interface MGDRoversTableViewController ()
 
-<<<<<<< HEAD
 @property (nonatomic, copy)NSArray *localRovers;
-=======
-@property (nonatomic, readwrite)NSArray *localRovers;
->>>>>>> Dvelop
 
 @end
 
@@ -52,14 +48,14 @@
                     }
                     
                     dispatch_async(returnedRoversQueue, ^{
-<<<<<<< HEAD
-                        [hangar addObjectsFromArray:rovers];
-                        dispatch_group_leave(roverGroup);
-=======
+// <<<<<<< HEAD
+//                        [hangar addObjectsFromArray:rovers];
+//                        dispatch_group_leave(roverGroup);
+// =======
                         [hangar addObject:roverManifest];
                         //dispatch_group_leave(roverGroup);
                         //yay we might have fixed it
->>>>>>> Dvelop
+// >>>>>>> Dvelop
                     });
                     self.localRovers = hangar;
                 }];

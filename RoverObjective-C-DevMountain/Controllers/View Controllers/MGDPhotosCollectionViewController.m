@@ -7,10 +7,22 @@
 //
 
 #import "MGDPhotosCollectionViewController.h"
+#import "MGDRoverPhotoController.h"
+#import "MGDPhotoCache.h"
+#import "MGDRoverPhoto.h"
+#import "MGDPhotoCollectionViewCell.h"
+
+#pragma Local Properties
 
 @interface MGDPhotosCollectionViewController ()
 
+@property (nonatomic, copy)NSArray *localPhotos;
+//@property (nonatomic, readwrite)NSData *cachedData;
+
 @end
+
+
+#pragma implemntation
 
 @implementation MGDPhotosCollectionViewController
 
@@ -57,7 +69,26 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
+    MGDPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"marsPhotosCollectionCell" forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[MGDPhotoCollectionViewCell alloc]init];
+    }
+    
+    MGDRoverPhoto *photo = self.localPhotos[indexPath.row];
+    
+    NSInteger photoIdentifier = [photo.photoIdentifier integerValue];
+    
+    NSData *cachedData = [[MGDPhotoCache sharedCache] imageDataForIdentifier:&photoIdentifier];
+    
+    if (cachedData != nil) {
+        UIImage *photoImage = [UIImage imageWithData:cachedData];
+        cell.thumbImageView.image = photoImage;
+    } else if (cachedData == nil) {
+        cell.thumbImageView.image = [UIImage imageNamed:@"roverPlaceholderImage"];
+        
+    }
+    
     
     // Configure the cell
     

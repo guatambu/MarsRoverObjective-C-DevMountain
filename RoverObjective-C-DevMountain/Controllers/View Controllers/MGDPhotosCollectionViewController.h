@@ -12,6 +12,7 @@
 
 #pragma properties
 
-@property (weak, nonatomic) IBOutlet UIImageView *thumbImageView;
+
+
 
 @end

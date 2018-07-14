@@ -10,4 +10,6 @@
 
 @interface MGDPhotoCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *thumbImageView;
+
 @end
